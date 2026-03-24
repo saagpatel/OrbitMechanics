@@ -53,6 +53,12 @@ export class CanvasRenderer {
 		this.colorblindMode = enabled;
 	}
 
+	private trailsEnabled = true;
+
+	setTrailsEnabled(enabled: boolean): void {
+		this.trailsEnabled = enabled;
+	}
+
 	render(
 		bodies: ReadonlyArray<Readonly<Body>>,
 		drawState: Readonly<VectorDrawState> | null,
@@ -72,7 +78,9 @@ export class CanvasRenderer {
 		this.gravityFieldOverlay.render(bodies);
 
 		// 4. Fading trails behind bodies
-		this.trailRenderer.render(bodies);
+		if (this.trailsEnabled) {
+			this.trailRenderer.render(bodies);
+		}
 
 		// 5. Solid body circles (with glow for massive bodies)
 		this.drawBodies(bodies);
