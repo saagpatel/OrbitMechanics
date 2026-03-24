@@ -248,24 +248,25 @@ export interface SandboxSave {
 ### Physics Constants (src/simulation/PhysicsConstants.ts)
 ```typescript
 // Simulation unit system:
-//   Distance: AU (astronomical units)  — 1 AU = 1.496e11 m
+//   Distance: AU (astronomical units) — 1 AU = 1.496e11 m
 //   Mass:     kg
-//   Time:     simulation seconds (1 sim-second ≠ 1 real second; scaled by timeScale)
+//   Time:     seconds
 //   Velocity: AU/s
 //
 // G in SI:           6.674e-11 m³/(kg·s²)
-// G in AU/s units:   6.674e-11 / (1.496e11)³ * (86400*365.25)²
-//                    ≈ 3.964e-14  AU³/(kg·s²)
+// G in AU³/(kg·s²):  6.674e-11 / (1.496e11)³ = 1.993e-44
 //
 // Circular orbit velocity at r AU around M kg:
-//   v = sqrt(G_AU * M / r)   →   Earth at 1 AU: ~1.99e-7 AU/s
+//   v = sqrt(G_AU * M / r)   →   Earth at 1 AU: ~1.991e-7 AU/s (29.78 km/s)
 
-export const G_AU = 3.964e-14;         // AU³/(kg·s²)
-export const AU_METERS = 1.496e11;     // meters per AU
-export const SOLAR_MASS_KG = 1.989e30; // kg
-export const EARTH_MASS_KG = 5.972e24; // kg
-export const SIM_DT = 1 / 60;         // fixed simulation timestep in sim-seconds
-export const MAX_CATCHUP_TICKS = 5;   // max simulation ticks per render frame
+export const G_AU = 1.993e-44;           // AU³/(kg·s²)
+export const AU_METERS = 1.496e11;       // meters per AU
+export const SOLAR_MASS_KG = 1.989e30;   // kg
+export const EARTH_MASS_KG = 5.972e24;   // kg
+export const SIM_DT = 200;              // seconds per integration step (~3.3 minutes)
+export const BASE_TICKS_PER_FRAME = 50;  // simulation ticks per rendered frame at timeScale=1
+export const MAX_TICKS_PER_FRAME = 1200; // hard cap on ticks per frame (safety valve)
+export const SOFTENING = 1e-10;          // AU — prevents NaN on body overlap
 ```
 
 ### Dependencies
@@ -351,13 +352,13 @@ No credentials. No server. No analytics.
 
 2. Implement `src/utils/Vector2.ts` — functions: `add`, `sub`, `scale`, `magnitude`, `normalize`, `dot`, `distance`, `rotate` — **Acceptance:** `tests/utils/Vector2.test.ts` covers all 8 operations with known values, all pass
 
-3. Implement `src/simulation/PhysicsConstants.ts` — G_AU, AU_METERS, SOLAR_MASS_KG, EARTH_MASS_KG, SIM_DT, MAX_CATCHUP_TICKS — **Acceptance:** Unit test confirms circular orbit velocity formula: `sqrt(G_AU * SOLAR_MASS_KG / 1.0)` ≈ `1.99e-7` AU/s (Earth's orbital speed at 1 AU)
+3. Implement `src/simulation/PhysicsConstants.ts` — G_AU, AU_METERS, SOLAR_MASS_KG, EARTH_MASS_KG, SIM_DT, BASE_TICKS_PER_FRAME, MAX_TICKS_PER_FRAME, SOFTENING — **Acceptance:** Unit test confirms circular orbit velocity formula: `sqrt(G_AU * SOLAR_MASS_KG / 1.0)` ≈ `1.991e-7` AU/s (Earth's orbital speed at 1 AU)
 
-4. Implement `src/simulation/VerletSimulation.ts` — fixed timestep Velocity Verlet; pairwise gravitational force sum; skip force on `isFixed` bodies — **Acceptance:** Place 1-solar-mass star (fixed) + Earth-mass planet at 1 AU with circular velocity `1.99e-7` AU/s; simulate 365 sim-days (365 × 86400 × 60 ticks); planet returns within 0.001 AU of start; specific orbital energy drifts < 0.01%
+4. Implement `src/simulation/VerletSimulation.ts` — fixed timestep Velocity Verlet; pairwise gravitational force sum; skip force on `isFixed` bodies — **Acceptance:** Place 1-solar-mass star (fixed) + Earth-mass planet at 1 AU with circular velocity; simulate 1 orbital period (~157,680 ticks at dt=200s); planet returns within 0.001 AU of start; specific orbital energy drifts < 0.01%
 
-5. Implement `src/simulation/KeplerSolver.ts` — `computeOrbitalElements(central: Body, orbiting: Body): OrbitalElements` using vis-viva and angular momentum — **Acceptance:** With Earth at 1 AU circular: eccentricity < 0.001, period = 31,557,600 sim-seconds ±0.5% (1 year)
+5. Implement `src/simulation/KeplerSolver.ts` — `computeOrbitalElements(central: Body, orbiting: Body): OrbitalElements` using vis-viva and angular momentum — **Acceptance:** With Earth at 1 AU circular: eccentricity < 0.001, period ±0.5% of analytical value
 
-6. Implement `src/game/GameLoop.ts` — `requestAnimationFrame` with timestep accumulator; `update(dt: number)` and `render(alpha: number)` separation; cap at MAX_CATCHUP_TICKS per frame — **Acceptance:** Console logs exactly 60 simulation ticks per real-second at 1× time scale; pausing tab for 5 seconds and resuming processes at most 5 backlogged ticks, not 300
+6. Implement `src/game/GameLoop.ts` — `requestAnimationFrame` with ticks-per-frame pattern; `onTick(dt)` and `onRender()` callbacks; ticks = `floor(BASE_TICKS_PER_FRAME * timeScale)`, capped at MAX_TICKS_PER_FRAME — **Acceptance:** At 1× timeScale, ~50 ticks per frame (3000 ticks/second at 60fps); pausing tab and resuming runs normal tick count per frame (no catchup)
 
 7. Implement `src/renderer/Viewport.ts` — `simToScreen(pos: Vector2): Vector2` and `screenToSim(pos: Vector2): Vector2`; mouse wheel zoom (0.5×–20×); click+drag pan — **Acceptance:** Body at simulation origin (0, 0) renders at canvas center; body at (1, 0) AU renders at correct pixel offset at default zoom
 
@@ -367,7 +368,7 @@ No credentials. No server. No analytics.
 - [ ] `npm test` → all physics tests pass (energy conservation, Kepler accuracy, Vector2 ops)
 - [ ] `npm run dev` → two bodies orbit each other on blank canvas
 - [ ] Chrome DevTools Performance → steady 60fps, no frame spikes above 20ms
-- [ ] Console: tick count = 60/second at 1× time scale
+- [ ] 1× speed: Earth orbit completes in ~53 real seconds; 20×: ~2.6 seconds
 
 **Risks:**
 - Risk: Orbit decays over many periods due to floating-point accumulation in Verlet
