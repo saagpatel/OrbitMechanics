@@ -1,0 +1,53 @@
+{
+	"id": "act1-06",
+	"act": 1,
+	"levelNumber": 6,
+	"title": "Just Right",
+	"description": "Precision matters. Hit a very specific circular orbit — exactly 0.7 AU from the star, with tight tolerances. Zoom in for finer control.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.1,
+			"targetSemiMajorAxis": 0.7,
+			"semiMajorAxisTolerance": 0.035,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "Zoom in for precision. The tolerance is tight — use the preview line to check for circularity before committing."
+}

@@ -1,0 +1,62 @@
+{
+	"id": "act1-08",
+	"act": 1,
+	"levelNumber": 8,
+	"title": "Circularize",
+	"description": "Your probe is stuck in a lopsided elliptical orbit. Use two burns to reshape it into a clean circle: one at the far point and one at the close point.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 3.449e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "probe",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.05,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 2,
+	"viewportBounds": {
+		"minX": -2.5,
+		"maxX": 2.5,
+		"minY": -2.5,
+		"maxY": 2.5
+	},
+	"hintText": "Burn prograde at apoapsis (farthest point) to raise periapsis. Then burn prograde at the new periapsis to circularize."
+}

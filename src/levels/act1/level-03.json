@@ -1,0 +1,51 @@
+{
+	"id": "act1-03",
+	"act": 1,
+	"levelNumber": 3,
+	"title": "Long Way Around",
+	"description": "Not all orbits are circles. Create an elliptical orbit — one that swings close to the star and then far away. Aim for moderate eccentricity.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0.55,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2.5,
+		"maxX": 2.5,
+		"minY": -2.5,
+		"maxY": 2.5
+	},
+	"hintText": "For an ellipse, drag your velocity vector at a slight angle — not perfectly perpendicular. The more off-angle, the more eccentric."
+}

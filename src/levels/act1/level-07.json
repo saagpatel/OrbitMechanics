@@ -1,0 +1,64 @@
+{
+	"id": "act1-07",
+	"act": 1,
+	"levelNumber": 7,
+	"title": "Two Moons",
+	"description": "A massive planet needs company. Place two satellites in stable orbits around it — they don't need to match each other, just stay in orbit.",
+	"fixedBodies": [
+		{
+			"id": "planet",
+			"mass": 5.972e+25,
+			"radius": 14,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#CC6633",
+			"shape": "circle",
+			"label": "Planet"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Moon A",
+			"color": "#88AAFF"
+		},
+		{
+			"mass": 1000000000000000,
+			"label": "Moon B",
+			"color": "#FF88AA"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "planet",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.1,
+			"checkWindowTicks": 5
+		},
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-1",
+			"targetBodyId": "planet",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.1,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 2,
+	"viewportBounds": {
+		"minX": -0.15,
+		"maxX": 0.15,
+		"minY": -0.15,
+		"maxY": 0.15
+	},
+	"hintText": "Place both satellites at different distances from the planet. Inner orbits are faster. Avoid overlapping orbits."
+}

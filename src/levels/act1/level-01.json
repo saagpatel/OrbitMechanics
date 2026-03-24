@@ -1,0 +1,53 @@
+{
+	"id": "act1-01",
+	"act": 1,
+	"levelNumber": 1,
+	"title": "First Orbit",
+	"description": "Place a satellite and give it just enough speed to orbit the star. Aim for a circular orbit at about half the distance to the edge of the viewport.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.05,
+			"targetSemiMajorAxis": 0.5,
+			"semiMajorAxisTolerance": 0.1,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -1.5,
+		"maxX": 1.5,
+		"minY": -1.5,
+		"maxY": 1.5
+	},
+	"hintText": "Place your satellite about 0.5 AU from the star, then drag perpendicular to the line connecting them. The preview should form a near-circle."
+}
