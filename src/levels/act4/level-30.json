@@ -1,0 +1,103 @@
+{
+	"id": "act4-30",
+	"act": 4,
+	"levelNumber": 30,
+	"title": "Sandbox Mastery",
+	"description": "The final challenge: place five bodies in stable orbits around the star. All five must maintain their orbits simultaneously — mutual perturbations will test your skill.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Body A",
+			"color": "#4488FF"
+		},
+		{
+			"mass": 1000000000000000,
+			"label": "Body B",
+			"color": "#44DDFF"
+		},
+		{
+			"mass": 1000000000000000,
+			"label": "Body C",
+			"color": "#FF6644"
+		},
+		{
+			"mass": 1000000000000000,
+			"label": "Body D",
+			"color": "#44FF88"
+		},
+		{
+			"mass": 1000000000000000,
+			"label": "Body E",
+			"color": "#FF44DD"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 30
+		},
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-1",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 30
+		},
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-2",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 30
+		},
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-3",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 30
+		},
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-4",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.15,
+			"checkWindowTicks": 30
+		}
+	],
+	"parBurnCount": 5,
+	"viewportBounds": {
+		"minX": -3,
+		"maxX": 3,
+		"minY": -3,
+		"maxY": 3
+	},
+	"hintText": "Space your five bodies at well-separated distances. Give each one its circular velocity for its radius. Wider spacing reduces perturbation."
+}

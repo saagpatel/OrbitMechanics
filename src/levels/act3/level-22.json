@@ -1,0 +1,67 @@
+{
+	"id": "act3-22",
+	"act": 3,
+	"levelNumber": 22,
+	"title": "Tug of War",
+	"description": "Two equal-mass stars hold you in their combined gravity well. Find a way to break free from both — it takes more energy than escaping just one.",
+	"fixedBodies": [
+		{
+			"id": "star-a",
+			"mass": 1.989e+30,
+			"radius": 14,
+			"position": {
+				"x": -1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star A"
+		},
+		{
+			"id": "star-b",
+			"mass": 1.989e+30,
+			"radius": 14,
+			"position": {
+				"x": 1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFAA44",
+			"shape": "circle",
+			"label": "Star B"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Probe",
+			"color": "#44DDFF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "escape_velocity",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star-a",
+			"checkWindowTicks": 15
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 3e-7,
+	"viewportBounds": {
+		"minX": -3,
+		"maxX": 3,
+		"minY": -3,
+		"maxY": 3
+	},
+	"hintText": "Two equal stars means double the gravity well. Burn away from the midpoint between the two stars with enough energy to escape both."
+}

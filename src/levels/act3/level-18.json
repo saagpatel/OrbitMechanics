@@ -1,0 +1,114 @@
+{
+	"id": "act3-18",
+	"act": 3,
+	"levelNumber": 18,
+	"title": "Double Assist",
+	"description": "Two planets, two gravity assists. Thread your probe through both to reach the inner target. Your fuel alone won't get you there.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet-inner",
+			"mass": 1.898e+27,
+			"radius": 9,
+			"position": {
+				"x": 0.3,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 3.6351e-7
+			},
+			"isFixed": false,
+			"color": "#CC8844",
+			"shape": "circle",
+			"label": "Inner Planet"
+		},
+		{
+			"id": "planet-outer",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 0,
+				"y": 0.8
+			},
+			"velocity": {
+				"x": -2.226e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#886633",
+			"shape": "circle",
+			"label": "Outer Planet"
+		},
+		{
+			"id": "target",
+			"mass": 1000000000000000,
+			"radius": 5,
+			"position": {
+				"x": -0.1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": -6.2961e-7
+			},
+			"isFixed": false,
+			"color": "#FF4444",
+			"shape": "diamond",
+			"label": "Target"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 0,
+				"y": -1.5
+			},
+			"velocity": {
+				"x": 1.6256e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.06,
+			"relativeVelocityMax": 3e-8,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 3,
+	"fuelBudget": 5e-8,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "Your fuel alone is not enough. Pass behind both planets in sequence — each flyby redirects your trajectory closer to the target."
+}

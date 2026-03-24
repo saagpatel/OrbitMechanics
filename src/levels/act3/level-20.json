@@ -1,0 +1,70 @@
+{
+	"id": "act3-20",
+	"act": 3,
+	"levelNumber": 20,
+	"title": "Dance",
+	"description": "The L4 Lagrange point sits 60° ahead of the planet in its orbit — a gravitational sweet spot. Place your probe there and hold position.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.991e-7
+			},
+			"isFixed": false,
+			"color": "#CC6633",
+			"shape": "circle",
+			"label": "Planet"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Trojan",
+			"color": "#44FF88"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "lagrange_station",
+			"bodyId": "satellite-0",
+			"targetBodyId": "planet",
+			"lagrangePoint": "L4",
+			"proximityDistance": 0.03,
+			"holdDuration": 5184000,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 1e-7,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "The L4 point is 60 degrees ahead of the planet at the same distance from the star. Match the planets orbital velocity exactly."
+}

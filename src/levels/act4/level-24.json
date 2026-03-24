@@ -1,0 +1,70 @@
+{
+	"id": "act4-24",
+	"act": 4,
+	"levelNumber": 24,
+	"title": "The Other Point",
+	"description": "L5 is the mirror of L4 — 60° behind the planet. Same physics, different angle. Can you find it?",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 0.8,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 2.226e-7
+			},
+			"isFixed": false,
+			"color": "#CC6633",
+			"shape": "circle",
+			"label": "Planet"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Station",
+			"color": "#44FF88"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "lagrange_station",
+			"bodyId": "satellite-0",
+			"targetBodyId": "planet",
+			"lagrangePoint": "L5",
+			"proximityDistance": 0.02,
+			"holdDuration": 5184000,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 8e-8,
+	"viewportBounds": {
+		"minX": -1.5,
+		"maxX": 1.5,
+		"minY": -1.5,
+		"maxY": 1.5
+	},
+	"hintText": "L5 is 60 degrees behind the planet — the mirror of L4. Same radius, same speed, just trailing instead of leading."
+}

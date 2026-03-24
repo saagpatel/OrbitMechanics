@@ -1,0 +1,131 @@
+{
+	"id": "act4-28",
+	"act": 4,
+	"levelNumber": 28,
+	"title": "Interplanetary",
+	"description": "A miniature solar system: Earth, Mars, Jupiter. Transfer from Earth's orbit all the way to Jupiter — use gravity assists to save fuel.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Sun"
+		},
+		{
+			"id": "earth",
+			"mass": 5.972e+24,
+			"radius": 6,
+			"position": {
+				"x": 1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.991e-7
+			},
+			"isFixed": false,
+			"color": "#4488FF",
+			"shape": "circle",
+			"label": "Earth"
+		},
+		{
+			"id": "mars",
+			"mass": 6.417e+23,
+			"radius": 5,
+			"position": {
+				"x": 0,
+				"y": 1.524
+			},
+			"velocity": {
+				"x": -1.6128e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Mars"
+		},
+		{
+			"id": "jupiter",
+			"mass": 1.898e+27,
+			"radius": 12,
+			"position": {
+				"x": -5.2,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": -8.7311e-8
+			},
+			"isFixed": false,
+			"color": "#DDAA66",
+			"shape": "circle",
+			"label": "Jupiter"
+		},
+		{
+			"id": "target",
+			"mass": 1000000000000000,
+			"radius": 5,
+			"position": {
+				"x": -5,
+				"y": 0.5
+			},
+			"velocity": {
+				"x": -5e-9,
+				"y": -8.7e-8
+			},
+			"isFixed": false,
+			"color": "#FF4444",
+			"shape": "diamond",
+			"label": "Target"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 1,
+				"y": 0.1
+			},
+			"velocity": {
+				"x": -5e-9,
+				"y": 1.99e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.1,
+			"relativeVelocityMax": 3e-8,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 3,
+	"fuelBudget": 8e-8,
+	"viewportBounds": {
+		"minX": -7,
+		"maxX": 7,
+		"minY": -7,
+		"maxY": 7
+	},
+	"hintText": "The classic planetary tour: Hohmann to Mars, then use Mars as a gravity assist toward Jupiter. Wait for the right alignment."
+}

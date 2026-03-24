@@ -1,0 +1,68 @@
+{
+	"id": "act3-19",
+	"act": 3,
+	"levelNumber": 19,
+	"title": "Figure Eight",
+	"description": "Two equal stars pull on everything between them. Find a stable orbit in this binary system — the gravitational tug-of-war makes it tricky.",
+	"fixedBodies": [
+		{
+			"id": "star-a",
+			"mass": 1.989e+30,
+			"radius": 14,
+			"position": {
+				"x": -0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star A"
+		},
+		{
+			"id": "star-b",
+			"mass": 1.989e+30,
+			"radius": 14,
+			"position": {
+				"x": 0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFAA44",
+			"shape": "circle",
+			"label": "Star B"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Probe",
+			"color": "#44DDFF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star-a",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.3,
+			"checkWindowTicks": 10
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "Place your probe between the two stars and give it velocity perpendicular to the line connecting them."
+}
