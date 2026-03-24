@@ -50,6 +50,8 @@ export class GameManager {
 	private readonly hud: GameHUD;
 	private readonly levelSelect: LevelSelect;
 	private readonly resultOverlay: ResultOverlay;
+	private readonly mainMenu: MainMenu;
+	private readonly settings: Settings;
 	private readonly screenManager: ScreenManager;
 	private readonly canvas: HTMLCanvasElement;
 
@@ -61,14 +63,14 @@ export class GameManager {
 		this.hud = new GameHUD();
 		this.levelSelect = new LevelSelect();
 		this.resultOverlay = new ResultOverlay();
-		const mainMenu = new MainMenu();
-		const settings = new Settings();
+		this.mainMenu = new MainMenu();
+		this.settings = new Settings();
 		this.screenManager = new ScreenManager(
 			canvas,
-			mainMenu,
+			this.mainMenu,
 			this.levelSelect,
 			this.hud,
-			settings,
+			this.settings,
 		);
 
 		this.gameLoop = new GameLoop(
@@ -83,7 +85,13 @@ export class GameManager {
 	async init(): Promise<void> {
 		this.levelManager.loadLevels();
 		this.updateLevelSelect();
-		this.screenManager.showScreen("level_select");
+
+		// Check sandbox unlock for main menu
+		const sandboxUnlocked =
+			this.levelManager.getProgress("act1-08")?.completed === true;
+		this.mainMenu.setSandboxUnlocked(sandboxUnlocked);
+
+		this.screenManager.showScreen("main_menu");
 		this.gameLoop.start();
 	}
 
@@ -428,7 +436,6 @@ export class GameManager {
 		this.resultOverlay.onNextLevel(() => {
 			if (!this.currentLevel) return;
 			const nextNum = this.currentLevel.levelNumber + 1;
-			// Search across all acts, not just current act
 			const allLevels = [
 				...this.levelManager.getLevelsByAct(1),
 				...this.levelManager.getLevelsByAct(2),
@@ -441,6 +448,37 @@ export class GameManager {
 			} else {
 				this.exitToLevelSelect();
 			}
+		});
+
+		// ── Main Menu navigation ────────────────────────────────────────
+		this.mainMenu.onPlay(() => {
+			this.updateLevelSelect();
+			this.screenManager.showScreen("level_select");
+		});
+		this.mainMenu.onSandbox(() => {
+			this.sandboxCb?.();
+		});
+		this.mainMenu.onSettings(() => {
+			this.screenManager.showScreen("settings");
+		});
+
+		// ── Settings ────────────────────────────────────────────────────
+		this.settings.onSettingChange((key, value) => {
+			if (key === "colorblindMode") {
+				this.renderer.setColorblindMode(value);
+			}
+			if (key === "showGravityField") {
+				this.renderer.setOverlayEnabled("gravityField", value);
+			}
+			if (key === "showOrbitalData") {
+				this.renderer.setOverlayEnabled("orbitalData", value);
+			}
+			if (key === "showTrails") {
+				this.renderer.setTrailsEnabled(value);
+			}
+		});
+		this.settings.onBack(() => {
+			this.screenManager.showScreen("main_menu");
 		});
 	}
 
@@ -542,15 +580,27 @@ export class GameManager {
 			if (this.screen !== "playing") return;
 			switch (e.key) {
 				case "Escape":
-					e.preventDefault();
-					if (this.screen === "playing") {
-						if (this.simRunning) {
-							const confirmed = window.confirm(
-								"Return to menu? Progress on this level will be lost.",
-							);
-							if (!confirmed) break;
+					{
+						e.preventDefault();
+						// Don't show exit dialog if InputController is handling the Escape
+						// (cancelling a vector draw). Only exit if we're in idle/committed state.
+						const drawPhase = this.inputController?.getDrawState()?.phase;
+						if (
+							drawPhase === "drawing_vector" ||
+							drawPhase === "selecting_body"
+						) {
+							break; // InputController handles this Escape
 						}
-						this.exitToMainMenu();
+						if (this.screen === "playing") {
+							if (this.simRunning) {
+								const confirmed = window.confirm(
+									"Return to menu? Progress on this level will be lost.",
+								);
+								if (!confirmed) break;
+							}
+							this.exitToMainMenu();
+						}
+						break;
 					}
 					break;
 				case " ":

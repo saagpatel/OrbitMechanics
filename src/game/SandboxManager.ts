@@ -263,6 +263,10 @@ export class SandboxManager {
 				case "4":
 					this.gameLoop.timeScale = 20;
 					break;
+				case "Escape":
+					e.preventDefault();
+					this.exitToLevelSelect();
+					break;
 			}
 		};
 		document.addEventListener("keydown", this.keydownHandler);
