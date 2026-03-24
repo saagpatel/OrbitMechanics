@@ -1,0 +1,55 @@
+{
+	"id": "act2-15",
+	"act": 2,
+	"levelNumber": 15,
+	"title": "The Slingshot",
+	"description": "You need to escape the star's gravity, but your fuel budget falls short of escape velocity by itself. A Jupiter-mass planet orbits at 0.5 AU. Fly through its gravity well — a close pass behind it in its orbital direction will fling you outward for free.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet",
+			"mass": 1.898e27,
+			"radius": 10,
+			"position": { "x": 0.5, "y": 0 },
+			"velocity": { "x": 0, "y": 2.816e-7 },
+			"isFixed": false,
+			"color": "#AA6633",
+			"shape": "circle",
+			"label": "Giant"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 1.0, "y": 0 },
+			"velocity": { "x": 0, "y": 1.991e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "escape_velocity",
+			"bodyId": "probe",
+			"targetBodyId": "star",
+			"checkWindowTicks": 10
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 5.0e-8,
+	"viewportBounds": { "minX": -2.5, "maxX": 2.5, "minY": -2.5, "maxY": 2.5 },
+	"hintText": "Direct escape costs ~8.25e-8 delta-v — more than your budget. Burn retrograde slightly to lower your periapsis toward the giant planet. A trailing flyby steals orbital energy from the planet and gives it to you."
+}

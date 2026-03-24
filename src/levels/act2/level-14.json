@@ -1,0 +1,57 @@
+{
+	"id": "act2-14",
+	"act": 2,
+	"levelNumber": 14,
+	"title": "Rescue",
+	"description": "A ship is stranded in an eccentric elliptical orbit (e=0.4, a=1.0 AU). Your rescue probe orbits circularly at 0.7 AU. Match the target's velocity precisely — the rendezvous tolerance is tight.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.7, "y": 0 },
+			"velocity": { "x": 0, "y": 2.38e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		},
+		{
+			"id": "target",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.6, "y": 0 },
+			"velocity": { "x": 0, "y": 3.041e-7 },
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Stranded"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.03,
+			"relativeVelocityMax": 1e-8,
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 1.5e-7,
+	"viewportBounds": { "minX": -1.5, "maxX": 1.5, "minY": -1.5, "maxY": 1.5 },
+	"hintText": "The stranded ship is at periapsis — moving fastest. Use vis-viva to match its speed: v = sqrt(μ*(2/r - 1/a)). Two burns: raise orbit, then match velocity."
+}

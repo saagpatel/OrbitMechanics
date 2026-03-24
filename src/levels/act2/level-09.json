@@ -1,0 +1,57 @@
+{
+	"id": "act2-09",
+	"act": 2,
+	"levelNumber": 9,
+	"title": "Two Burns",
+	"description": "A Hohmann transfer: two burns to move from one circular orbit to another. Burn once to start an ellipse, then again at the far end to circularize. Rendezvous with the target waiting at 1.0 AU.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.5, "y": 0 },
+			"velocity": { "x": 0, "y": 2.816e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		},
+		{
+			"id": "target",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.454, "y": 0.891 },
+			"velocity": { "x": -1.774e-7, "y": 9.039e-8 },
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Target"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.05,
+			"relativeVelocityMax": 2e-8,
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 1.2e-7,
+	"viewportBounds": { "minX": -1.5, "maxX": 1.5, "minY": -1.5, "maxY": 1.5 },
+	"hintText": "A Hohmann transfer takes exactly two burns. The first raises your apoapsis to the target orbit; the second circularizes at apoapsis."
+}

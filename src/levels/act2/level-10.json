@@ -1,0 +1,57 @@
+{
+	"id": "act2-10",
+	"act": 2,
+	"levelNumber": 10,
+	"title": "Short Cut",
+	"description": "When your destination is more than 11.94× farther than your starting orbit, a bi-elliptic transfer beats Hohmann on fuel. Three burns: raise to a high intermediate orbit, then two burns to drop into the target. Rendezvous with the target at 3.0 AU.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.2, "y": 0 },
+			"velocity": { "x": 0, "y": 4.453e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		},
+		{
+			"id": "target",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": -2.598, "y": 1.5 },
+			"velocity": { "x": -5.75e-8, "y": -9.959e-8 },
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Target"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.08,
+			"relativeVelocityMax": 2e-8,
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 3,
+	"fuelBudget": 3.0e-7,
+	"viewportBounds": { "minX": -4.0, "maxX": 4.0, "minY": -4.0, "maxY": 4.0 },
+	"hintText": "Try raising your orbit very high first, then adjusting at the top before dropping to 3.0 AU. Three burns, but more efficient than a direct transfer."
+}

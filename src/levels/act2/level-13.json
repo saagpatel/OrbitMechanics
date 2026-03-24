@@ -1,0 +1,46 @@
+{
+	"id": "act2-13",
+	"act": 2,
+	"levelNumber": 13,
+	"title": "Flip It",
+	"description": "Your probe is trapped in a retrograde orbit — circling the wrong way. A single large burn can flip it to prograde. How much delta-v does reversing an orbit actually cost?",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.7, "y": 0 },
+			"velocity": { "x": 0, "y": -2.38e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "probe",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.1,
+			"orbitDirection": "prograde",
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": { "minX": -1.5, "maxX": 1.5, "minY": -1.5, "maxY": 1.5 },
+	"hintText": "To flip direction, burn prograde (in the direction of your new desired orbit). You need 2× the orbital speed — about 4.76e-7 AU/s."
+}

@@ -1,0 +1,57 @@
+{
+	"id": "act2-11",
+	"act": 2,
+	"levelNumber": 11,
+	"title": "Fuel Budget",
+	"description": "Same Hohmann transfer, but your tank is almost empty. The optimal two-burn solution uses about 80% of what you have — no wasted delta-v. Precision matters here.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.5, "y": 0 },
+			"velocity": { "x": 0, "y": 2.816e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		},
+		{
+			"id": "target",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 0.454, "y": 0.891 },
+			"velocity": { "x": -1.774e-7, "y": 9.039e-8 },
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Target"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.05,
+			"relativeVelocityMax": 2e-8,
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 8.5e-8,
+	"viewportBounds": { "minX": -1.5, "maxX": 1.5, "minY": -1.5, "maxY": 1.5 },
+	"hintText": "The optimal Hohmann uses about 8.0e-8 delta-v total. You have 8.5e-8 — only 6% headroom. Every burn must be precise."
+}
