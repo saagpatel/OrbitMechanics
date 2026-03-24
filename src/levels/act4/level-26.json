@@ -1,0 +1,72 @@
+{
+	"id": "act4-26",
+	"act": 4,
+	"levelNumber": 26,
+	"title": "Tidal Lock",
+	"description": "Achieve a 1:1 resonance — match the reference body's orbital period exactly. Same altitude, same speed, same dance.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "ref-body",
+			"mass": 5.972e+24,
+			"radius": 6,
+			"position": {
+				"x": 1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.991e-7
+			},
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Reference"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "orbital_resonance",
+			"bodyId": "satellite-0",
+			"targetBodyId": "ref-body",
+			"resonanceRatio": [
+				1,
+				1
+			],
+			"resonanceTolerance": 0.03,
+			"checkWindowTicks": 50
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 1e-7,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "For 1:1 resonance, match the reference bodys orbital period. Same distance from the star means the same period."
+}

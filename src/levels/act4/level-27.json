@@ -1,0 +1,131 @@
+{
+	"id": "act4-27",
+	"act": 4,
+	"levelNumber": 27,
+	"title": "Grand Tour",
+	"description": "Three planets form stepping stones across the system. Chain gravity assists from the inner planet outward to reach the distant target.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet-1",
+			"mass": 1.898e+27,
+			"radius": 9,
+			"position": {
+				"x": 0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 2.8157e-7
+			},
+			"isFixed": false,
+			"color": "#CC8844",
+			"shape": "circle",
+			"label": "Planet 1"
+		},
+		{
+			"id": "planet-2",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 0,
+				"y": 1.2
+			},
+			"velocity": {
+				"x": -1.8175e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#AA6644",
+			"shape": "circle",
+			"label": "Planet 2"
+		},
+		{
+			"id": "planet-3",
+			"mass": 1.898e+27,
+			"radius": 11,
+			"position": {
+				"x": -2,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": -1.4078e-7
+			},
+			"isFixed": false,
+			"color": "#886644",
+			"shape": "circle",
+			"label": "Planet 3"
+		},
+		{
+			"id": "target",
+			"mass": 1000000000000000,
+			"radius": 5,
+			"position": {
+				"x": 3,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.1495e-7
+			},
+			"isFixed": false,
+			"color": "#FF4444",
+			"shape": "diamond",
+			"label": "Target"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 0.3,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 3.6351e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.08,
+			"relativeVelocityMax": 3e-8,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 4,
+	"fuelBudget": 6e-8,
+	"viewportBounds": {
+		"minX": -4,
+		"maxX": 4,
+		"minY": -4,
+		"maxY": 4
+	},
+	"hintText": "Use each planet as a stepping stone. Pass behind each one to gain energy and redirect toward the next."
+}

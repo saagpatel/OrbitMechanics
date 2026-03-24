@@ -1,0 +1,97 @@
+{
+	"id": "act3-17",
+	"act": 3,
+	"levelNumber": 17,
+	"title": "Around the Moon",
+	"description": "Use the inner planet's gravity to bend your trajectory and reach the target at the outer orbit. A direct transfer would cost too much fuel.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 2.8157e-7
+			},
+			"isFixed": false,
+			"color": "#CC6633",
+			"shape": "circle",
+			"label": "Planet"
+		},
+		{
+			"id": "target",
+			"mass": 1000000000000000,
+			"radius": 5,
+			"position": {
+				"x": 0,
+				"y": 1
+			},
+			"velocity": {
+				"x": -1.991e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#FF4444",
+			"shape": "diamond",
+			"label": "Target"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": -1.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": -1.6256e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.06,
+			"relativeVelocityMax": 2e-8,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 1.2e-7,
+	"viewportBounds": {
+		"minX": -2.5,
+		"maxX": 2.5,
+		"minY": -2.5,
+		"maxY": 2.5
+	},
+	"hintText": "Aim to pass just behind the inner planet. A trailing flyby bends your path outward toward the target."
+}

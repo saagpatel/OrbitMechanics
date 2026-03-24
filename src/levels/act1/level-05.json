@@ -1,0 +1,49 @@
+{
+	"id": "act1-05",
+	"act": 1,
+	"levelNumber": 5,
+	"title": "Too Fast",
+	"description": "What happens when you go fast enough? Give your probe enough velocity to escape the star's gravity entirely. Once free, it never comes back.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Probe",
+			"color": "#44FF88"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "escape_velocity",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2.5,
+		"maxX": 2.5,
+		"minY": -2.5,
+		"maxY": 2.5
+	},
+	"hintText": "Escape velocity is about 41% faster than circular velocity. Drag a longer vector than you would for a circular orbit."
+}

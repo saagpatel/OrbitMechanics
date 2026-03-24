@@ -1,0 +1,52 @@
+{
+	"id": "act1-04",
+	"act": 1,
+	"levelNumber": 4,
+	"title": "The Other Way",
+	"description": "Orbits can go either direction. Create a retrograde orbit — one that goes clockwise instead of the usual counter-clockwise.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#FF6644"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.1,
+			"orbitDirection": "retrograde",
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "Retrograde means clockwise. If the star is to your left, drag your velocity vector downward instead of upward."
+}

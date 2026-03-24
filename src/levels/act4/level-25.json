@@ -1,0 +1,72 @@
+{
+	"id": "act4-25",
+	"act": 4,
+	"levelNumber": 25,
+	"title": "Resonance",
+	"description": "Achieve a 2:1 orbital resonance with the reference body — your probe should orbit exactly twice for every one orbit of the inner body.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "ref-body",
+			"mass": 5.972e+24,
+			"radius": 6,
+			"position": {
+				"x": 0.5,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 2.8157e-7
+			},
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Inner Body"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "orbital_resonance",
+			"bodyId": "satellite-0",
+			"targetBodyId": "ref-body",
+			"resonanceRatio": [
+				2,
+				1
+			],
+			"resonanceTolerance": 0.05,
+			"checkWindowTicks": 50
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 1.2e-7,
+	"viewportBounds": {
+		"minX": -1.5,
+		"maxX": 1.5,
+		"minY": -1.5,
+		"maxY": 1.5
+	},
+	"hintText": "For 2:1 resonance, your orbit period must be exactly twice the reference body. Target an orbital radius of about 0.794 AU."
+}

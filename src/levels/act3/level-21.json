@@ -1,0 +1,95 @@
+{
+	"id": "act3-21",
+	"act": 3,
+	"levelNumber": 21,
+	"title": "Chaos",
+	"description": "Two planets in close orbits create chaotic gravitational perturbations. The trajectory preview will lie to you — trust your intuition and escape.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet-a",
+			"mass": 5.972e+25,
+			"radius": 8,
+			"position": {
+				"x": 0.4,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 3.148e-7
+			},
+			"isFixed": false,
+			"color": "#CC8844",
+			"shape": "circle",
+			"label": "Planet A"
+		},
+		{
+			"id": "planet-b",
+			"mass": 5.972e+25,
+			"radius": 8,
+			"position": {
+				"x": 0,
+				"y": 0.5
+			},
+			"velocity": {
+				"x": -2.8157e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#886644",
+			"shape": "circle",
+			"label": "Planet B"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 1,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.991e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "escape_velocity",
+			"bodyId": "probe",
+			"targetBodyId": "star",
+			"checkWindowTicks": 10
+		}
+	],
+	"parBurnCount": 1,
+	"fuelBudget": 2e-7,
+	"viewportBounds": {
+		"minX": -2,
+		"maxX": 2,
+		"minY": -2,
+		"maxY": 2
+	},
+	"hintText": "The trajectory preview is unreliable here — that is the lesson. Burn hard in a direction away from both planets to escape."
+}

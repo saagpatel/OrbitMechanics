@@ -1,0 +1,57 @@
+{
+	"id": "act2-12",
+	"act": 2,
+	"levelNumber": 12,
+	"title": "Mars Run",
+	"description": "Earth to Mars. Your probe orbits at 1.0 AU; a Mars-analog waits at 1.524 AU. Execute a Hohmann transfer and rendezvous before your launch window closes.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e30,
+			"radius": 16,
+			"position": { "x": 0, "y": 0 },
+			"velocity": { "x": 0, "y": 0 },
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "probe",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 1.0, "y": 0 },
+			"velocity": { "x": 0, "y": 1.991e-7 },
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "diamond",
+			"label": "Probe"
+		},
+		{
+			"id": "target",
+			"mass": 1e15,
+			"radius": 6,
+			"position": { "x": 1.096, "y": 1.059 },
+			"velocity": { "x": -1.12e-7, "y": 1.16e-7 },
+			"isFixed": false,
+			"color": "#FF6644",
+			"shape": "circle",
+			"label": "Mars"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.06,
+			"relativeVelocityMax": 2e-8,
+			"checkWindowTicks": 3
+		}
+	],
+	"parBurnCount": 2,
+	"fuelBudget": 1.5e-7,
+	"viewportBounds": { "minX": -2.0, "maxX": 2.0, "minY": -2.0, "maxY": 2.0 },
+	"hintText": "Mars is about 44° ahead of your arrival point. A Hohmann transfer takes roughly 260 simulated days. Time your burns well."
+}

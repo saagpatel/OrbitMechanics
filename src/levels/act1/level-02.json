@@ -1,0 +1,53 @@
+{
+	"id": "act1-02",
+	"act": 1,
+	"levelNumber": 2,
+	"title": "Higher Ground",
+	"description": "This time, achieve a circular orbit twice as far out. You'll need more speed — but not too much, or you'll fly away.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		}
+	],
+	"availableBodies": [
+		{
+			"mass": 1000000000000000,
+			"label": "Satellite",
+			"color": "#4488FF"
+		}
+	],
+	"winConditions": [
+		{
+			"type": "stable_orbit",
+			"bodyId": "satellite-0",
+			"targetBodyId": "star",
+			"targetEccentricity": 0,
+			"eccentricityTolerance": 0.05,
+			"targetSemiMajorAxis": 1,
+			"semiMajorAxisTolerance": 0.2,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 1,
+	"viewportBounds": {
+		"minX": -2.5,
+		"maxX": 2.5,
+		"minY": -2.5,
+		"maxY": 2.5
+	},
+	"hintText": "At 1.0 AU you need slightly less velocity than at 0.5 AU. Circular velocity scales as 1/sqrt(r). Drag a longer vector."
+}

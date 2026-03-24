@@ -1,0 +1,131 @@
+{
+	"id": "act4-29",
+	"act": 4,
+	"levelNumber": 29,
+	"title": "The Hard Way",
+	"description": "Reach the inner target from the outer edge with minimal fuel. Every gravity assist counts — there's no room for wasted delta-v.",
+	"fixedBodies": [
+		{
+			"id": "star",
+			"mass": 1.989e+30,
+			"radius": 16,
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 0
+			},
+			"isFixed": true,
+			"color": "#FFD700",
+			"shape": "circle",
+			"label": "Star"
+		},
+		{
+			"id": "planet-1",
+			"mass": 5.972e+25,
+			"radius": 7,
+			"position": {
+				"x": 0.4,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 3.148e-7
+			},
+			"isFixed": false,
+			"color": "#CC8844",
+			"shape": "circle",
+			"label": "Planet 1"
+		},
+		{
+			"id": "planet-2",
+			"mass": 1.898e+27,
+			"radius": 10,
+			"position": {
+				"x": 0,
+				"y": -1.5
+			},
+			"velocity": {
+				"x": 1.6256e-7,
+				"y": 0
+			},
+			"isFixed": false,
+			"color": "#AA6644",
+			"shape": "circle",
+			"label": "Planet 2"
+		},
+		{
+			"id": "planet-3",
+			"mass": 5.972e+25,
+			"radius": 7,
+			"position": {
+				"x": -3,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": -1.1495e-7
+			},
+			"isFixed": false,
+			"color": "#886644",
+			"shape": "circle",
+			"label": "Planet 3"
+		},
+		{
+			"id": "target",
+			"mass": 1000000000000000,
+			"radius": 5,
+			"position": {
+				"x": 0.2,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 4.452e-7
+			},
+			"isFixed": false,
+			"color": "#FF4444",
+			"shape": "diamond",
+			"label": "Target"
+		},
+		{
+			"id": "probe",
+			"mass": 1000000000000000,
+			"radius": 6,
+			"position": {
+				"x": 3,
+				"y": 0
+			},
+			"velocity": {
+				"x": 0,
+				"y": 1.1495e-7
+			},
+			"isFixed": false,
+			"color": "#44DDFF",
+			"shape": "circle",
+			"label": "Probe"
+		}
+	],
+	"availableBodies": [],
+	"winConditions": [
+		{
+			"type": "rendezvous",
+			"bodyId": "probe",
+			"targetBodyId": "target",
+			"proximityDistance": 0.06,
+			"relativeVelocityMax": 3e-8,
+			"checkWindowTicks": 5
+		}
+	],
+	"parBurnCount": 3,
+	"fuelBudget": 1.5e-7,
+	"viewportBounds": {
+		"minX": -5,
+		"maxX": 5,
+		"minY": -5,
+		"maxY": 5
+	},
+	"hintText": "Coming from the outer edge, pass in front of planets (leading flyby) to lose energy and drop toward the inner target."
+}
