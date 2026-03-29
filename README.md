@@ -1,95 +1,67 @@
-![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-3-6E9F18?logo=vitest&logoColor=white) ![Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?logo=vercel&logoColor=white)
-
 # OrbitMechanics
 
-A browser-based orbital mechanics puzzle game built on real Newtonian physics. Place satellites, apply delta-v burns, and guide spacecraft into target orbits across 30 handcrafted levels spanning four acts.
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](#) [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](#)
 
-The simulation runs Verlet integration with gravitational constants derived from real astronomical values — distances in AU, masses in kg, velocities in AU/s. A patched-conics solver handles sphere-of-influence transitions between bodies, and a Kepler solver computes orbit previews in real time so you can see your trajectory before committing a burn.
+> Real orbital physics in a browser tab — place your satellites, plot your burns, and guide spacecraft through gravitational fields that actually obey Newton
 
-After completing Act 1 a free-form **Sandbox** mode unlocks, letting you place any combination of stars, planets, and satellites and watch the system evolve under gravity with no win condition.
+OrbitMechanics is a browser-based puzzle game built on real Newtonian physics. Distances are in AU, masses in kg, velocities in AU/s. A Verlet integrator advances the simulation each tick; a Kepler solver computes trajectory previews in real time so you see your orbit before committing a burn. Patched conics handle sphere-of-influence transitions between bodies. 30 handcrafted levels across four acts, plus a Sandbox mode that unlocks after Act 1.
 
-## Tech Stack
+## Features
 
-| Layer | Technology |
-|---|---|
-| Language | TypeScript 5.7 (strict mode) |
-| Bundler | Vite 6 |
-| Rendering | HTML5 Canvas 2D API |
-| Physics | Custom Verlet integrator + patched conics |
-| Tests | Vitest 3 |
-| Deploy | Vercel |
+- **Real physics** — Verlet integration with gravitational constants derived from astronomical values; no fake orbital shortcuts
+- **Trajectory preview** — Kepler solver renders your projected orbit arc in real time before you commit a delta-v burn
+- **Patched conics** — smooth sphere-of-influence handoff between bodies as your spacecraft crosses gravitational boundaries
+- **30 levels** — four acts of handcrafted challenges from basic circular parking orbits to multi-body gravity assists
+- **Sandbox mode** — place stars, planets, and satellites in any configuration and watch the system evolve; no win condition, pure exploration
+- **Zero dependencies** — pure TypeScript and the browser's native Canvas 2D API; nothing to install beyond Node
 
-No runtime dependencies — the entire game is pure TypeScript and the browser's native Canvas API.
+## Quick Start
 
-## Prerequisites
+### Prerequisites
 
 - Node.js 18+
-- npm (comes with Node)
+- npm (included with Node)
 
-## Getting Started
+### Installation
 
 ```bash
-# Install dependencies
+git clone https://github.com/saagpatel/OrbitMechanics.git
+cd OrbitMechanics
 npm install
+```
 
-# Start the dev server
+### Usage
+
+```bash
+# Start dev server
 npm run dev
 
-# Build for production
+# Run tests
+npm test
+
+# Production build
 npm run build
 
 # Preview production build locally
 npm run preview
-
-# Run tests
-npm test
 ```
 
-Open `http://localhost:5173` in your browser after `npm run dev`.
+## Tech Stack
 
-## Project Structure
+| Layer | Technology |
+|-------|------------|
+| Language | TypeScript 5.7 (strict mode) |
+| Bundler | Vite 6 |
+| Rendering | HTML5 Canvas 2D API |
+| Physics | Custom Verlet integrator + patched conics |
+| Orbit preview | Kepler solver (analytical) |
+| Tests | Vitest 3 |
+| Deploy | Vercel |
 
-```
-OrbitMechanics/
-├── src/
-│   ├── game/           # Game loop, input, level management, win/fail logic
-│   ├── levels/         # Level definitions (JSON) — 30 levels across 4 acts
-│   │   ├── act1/       # Levels 1–8
-│   │   ├── act2/       # Levels 9–16
-│   │   ├── act3/       # Levels 17–22
-│   │   └── act4/       # Levels 23–30
-│   ├── renderer/       # Canvas renderer, gravity field overlay, orbital data overlay
-│   ├── simulation/     # Verlet integrator, Kepler solver, patched conics, physics constants
-│   ├── types/          # Shared TypeScript types
-│   ├── ui/             # Screen manager and all UI screens (HUD, menus, overlays)
-│   ├── utils/          # Local storage persistence
-│   └── main.ts         # Entry point
-├── tests/              # Vitest test suite
-├── index.html
-├── vite.config.ts
-└── vitest.config.ts
-```
+## Architecture
 
-## How to Play
-
-1. **Select a level** from the level select screen.
-2. **Click on the canvas** to place your satellite (when a placement is required).
-3. **Click and drag** from the satellite to draw a delta-v vector — a trajectory preview renders live.
-4. **Release** to commit the burn and start the simulation.
-5. Reach the target orbit to win. Fewer burns earns more stars.
-
-**Keyboard shortcuts** during gameplay:
-
-| Key | Action |
-|---|---|
-| `Space` | Pause / resume |
-| `1` / `2` / `3` / `4` | Set time scale (0.1×, 1×, 5×, 20×) |
-| `Shift + drag` | Pan the viewport |
-| `Scroll wheel` | Zoom in / out |
-| `Escape` | Return to main menu |
-
-<!-- TODO: Add screenshot -->
+The simulation loop runs at a fixed physics timestep decoupled from the render framerate. The Verlet integrator accumulates forces from all gravitating bodies each tick; when a spacecraft crosses a body's sphere of influence the patched-conics solver takes over for the preview calculation. The Kepler analytical solver only runs on the preview path — committed trajectories always use the integrator to stay consistent. All physics state is plain TypeScript objects; no external physics library.
 
 ## License
 
-No license file is present in this repository. All rights reserved by the author.
+MIT
