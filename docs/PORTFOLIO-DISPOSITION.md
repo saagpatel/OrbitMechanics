@@ -7,9 +7,9 @@ patched conics) on `origin/main`. 30 handcrafted levels across
 4 acts + Sandbox mode. Vercel deploy config + security headers +
 CVE fixes. **Sixth static-host cluster member.** Joins static SPA
 sub-shape (alongside HowMoneyMoves + Neural Network Playground) —
-**third static-SPA sub-shape member**. Zero runtime dependencies
-beyond Canvas 2D — pure browser game with no backend, no
-analytics, no auth.
+**third static-SPA sub-shape member**. One runtime dependency
+(@vercel/analytics for usage tracking) beyond Canvas 2D — no
+backend, no auth, no game engine.
 
 > Disposition uses strict `origin/main` verification.
 
@@ -42,10 +42,11 @@ AU/s. A **Verlet integrator** advances the simulation per-tick; a
 the projected orbit before committing a delta-v burn; **patched
 conics** handle sphere-of-influence handoff between bodies. 30
 handcrafted levels across four acts (circular orbits → multi-body
-gravity assists) plus a Sandbox mode unlocked after Act 1. **Zero
-dependencies beyond Canvas 2D** — no game engine, no WebGL, no
-framework. Per memory: v1.0 done. Vercel deploy config + security
-headers + HIGH-severity CVE fixes confirm production-hardening.
+gravity assists) plus a Sandbox mode unlocked after Act 1. **One
+runtime dependency (@vercel/analytics)** beyond Canvas 2D — no
+game engine, no WebGL, no framework. Per memory: v1.0 done. Vercel
+deploy config + security headers + HIGH-severity CVE fixes confirm
+production-hardening.
 
 ---
 
@@ -131,11 +132,11 @@ linked.
 
 | Field | Value |
 |---|---|
-| `origin/main` tip | `07e4d12` chore: add .vercel to gitignore |
+| `origin/main` tip | `b5dbc5b` docs: lean CLAUDE.md (claude-md-lint) |
 | Default branch | `main` |
 | Build system | TypeScript + Canvas 2D + Vercel static deploy |
 | Phases shipped | v1.0 per memory; 30 levels + Sandbox + production-hardening |
 | Compute model | **Pure client-side physics** (Verlet + Kepler + patched conics in Canvas 2D) |
-| Distinguishing tech | **Real Newtonian physics** (no fake orbital shortcuts) + **zero dependencies** (no framework, no engine) |
+| Distinguishing tech | **Real Newtonian physics** (no fake orbital shortcuts) + **minimal dependencies** (@vercel/analytics only; no framework, no engine) |
 | Migration state | No `legacy-origin` remote |
 | Distinguishing feature | **Sixth static-host cluster member; third static-SPA sub-shape member.** First with physics-simulation compute model. Real Newtonian physics positioning. |

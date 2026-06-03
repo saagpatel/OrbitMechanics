@@ -26,9 +26,8 @@ npm run preview      # preview production build locally
 - `src/game/` — game logic
 - `src/renderer/` — Canvas 2D rendering
 - `src/levels/` — level data as JSON files (data-driven; add levels without code changes)
-- `Viewport.ts` — simulation space (AU) ↔ screen space (pixel) conversion
-- `GameLoop.ts` — fixed timestep with accumulator (simulation tick is decoupled from `requestAnimationFrame`)
-- Level editor: `?devtools=1` URL param (authoring only, not exposed to players)
+- `src/renderer/Viewport.ts` — simulation space (AU) ↔ screen space (pixel) conversion
+- `src/game/GameLoop.ts` — fixed timestep with accumulator (simulation tick is decoupled from `requestAnimationFrame`)
 
 ## Key Decisions
 
