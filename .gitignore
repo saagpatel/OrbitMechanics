@@ -11,3 +11,4 @@ dist
 
 # Editor/agent backup files
 *.bak
+.env*.local
