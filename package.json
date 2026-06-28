@@ -14,8 +14,8 @@
 		"@types/node": "25.6.0",
 		"jsdom": "29.0.1",
 		"typescript": "~6.0.3",
-		"vite": "^6.0.0",
-		"vitest": "^3.2.6"
+		"vite": "^8.1.0",
+		"vitest": "^4.1.9"
 	},
 	"dependencies": {
 		"@vercel/analytics": "2.0.1"
