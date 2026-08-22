@@ -20,10 +20,9 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
 
-		/* Paths */
-		"baseUrl": ".",
+		/* Paths (TS7: baseUrl removed; paths resolve relative to this tsconfig) */
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": ["src", "tests"]
