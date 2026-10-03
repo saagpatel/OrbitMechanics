@@ -24,9 +24,9 @@ OrbitMechanics is a browser-based puzzle game built on real Newtonian physics. D
 
 ### Installation
 
-From the repository root:
-
 ```bash
+git clone https://github.com/saagpatel/OrbitMechanics.git
+cd OrbitMechanics
 npm ci
 ```
 
