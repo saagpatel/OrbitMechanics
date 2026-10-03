@@ -14,7 +14,7 @@ OrbitMechanic is a browser-based explorable explanation game for orbital mechani
 - `CLAUDE.md`
 - `IMPLEMENTATION-ROADMAP.md`
 - `package.json`
-- `.codex/verify.commands`
+- `README.md#verification`
 
 ## Core Rules
 
@@ -35,7 +35,7 @@ OrbitMechanic is a browser-based explorable explanation game for orbital mechani
 
 ## Verification
 
-Use `.codex/verify.commands` as the canonical local gate. Current session note: JavaScript gates require Node dependencies to be installed first.
+Use [README verification](README.md#verification) as the canonical local gate; it documents dependency installation, focused and broader tests, build/typecheck, and conditional browser checks.
 
 ## Done Criteria
 

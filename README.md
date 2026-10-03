@@ -19,7 +19,7 @@ OrbitMechanics is a browser-based puzzle game built on real Newtonian physics. D
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 26+ (also supported by the lockfile: Node 22.22.2+ on the 22 line or 24.15.0+ on the 24 line)
 - npm (included with Node)
 
 ### Installation
@@ -27,7 +27,7 @@ OrbitMechanics is a browser-based puzzle game built on real Newtonian physics. D
 ```bash
 git clone https://github.com/saagpatel/OrbitMechanics.git
 cd OrbitMechanics
-npm install
+npm ci
 ```
 
 ### Usage
@@ -45,6 +45,23 @@ npm run build
 # Preview production build locally
 npm run preview
 ```
+
+## Verification
+
+Run from the repository root after `npm ci` (uses `package-lock.json`). Select the test file related to your change first; for example:
+
+```bash
+npm test -- tests/utils/Vector2.test.ts
+# Physics changes: select the relevant tests/simulation/*.test.ts file.
+# Broader unit gate:
+npm test
+# TypeScript checking followed by the production bundle:
+npm run build
+```
+
+`npm test` runs once; `npm run test:watch` is the interactive alternative. No lint or formatter script is configured in `package.json`.
+
+For Canvas, input, level progression, or simulation display changes, run `npm run dev` and check the affected level and Sandbox in a browser, including pause/reset, controls and a narrow viewport. Use a separate browser profile because progress is stored in localStorage. Unit tests do not prove rendering or interaction behavior. Pure documentation changes do not require browser checks.
 
 ## Tech Stack
 
