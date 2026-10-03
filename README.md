@@ -61,7 +61,7 @@ npm run build
 
 `npm test` runs once; `npm run test:watch` is the interactive alternative. No lint or formatter script is configured in `package.json`.
 
-For Canvas, input, level progression, or simulation display changes, run `npm run dev` and check the affected level and Sandbox in a browser, including pause/reset, controls and a narrow viewport. Use a separate browser profile because progress is stored in localStorage. Unit tests do not prove rendering or interaction behavior. Pure documentation changes do not require browser checks.
+For Canvas, input, level progression, or simulation display changes, run `npm run dev` and check the affected level and Sandbox in a browser, including pause/reset, controls and a narrow viewport. Use a separate browser profile because progress is stored in localStorage. The page calls Vercel Analytics, which loads an external debug script in development: block all non-loopback requests during browser verification. If your browser setup cannot intercept those requests, record this browser lane as unavailable rather than launching it as a bounded local check. Unit tests do not prove rendering or interaction behavior. Pure documentation changes do not require browser checks.
 
 ## Tech Stack
 
