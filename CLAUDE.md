@@ -4,21 +4,27 @@ Browser-based explorable explanation game teaching orbital mechanics through dir
 
 ## Stack
 
-- TypeScript 5.7+ (strict mode)
-- Vite 6+ (build + dev server)
+- TypeScript 7.0.2 (strict mode)
+- Vite 8.3.2 (build + dev server)
 - HTML5 Canvas 2D — browser native (no WebGL, no physics library)
-- Vitest 3+ (unit tests for all physics math)
+- Vitest 5.0.2 (unit tests for all physics math)
 - Vercel (static deploy target)
 
 ## Build / Test / Run
 
+Use npm with `package-lock.json`. Node.js must satisfy `^22.22.2 || ^24.15.0 || >=26.0.0`: 22.22.2+ on the 22 line, 24.15.0+ on the 24 line, or 26+; Node 23 and 25 are unsupported. This is the intersection of all locked dependency engine ranges. Stack versions above are lockfile resolutions; manifest ranges are TypeScript `~7.0.2`, Vite `^8.3.1`, and Vitest `^5.0.2`.
+
 ```sh
-npm install          # install dev dependencies
+npm ci               # install locked runtime and dev dependencies
 npm run dev          # dev server at localhost:5173
-npm test             # unit tests via Vitest
-npm run build        # TypeScript compile + Vite production build
+npm test             # unit tests via Vitest (single run)
+npm run test:watch   # interactive tests
+npm exec -- tsc --noEmit # TypeScript typecheck only
+npm run build        # TypeScript typecheck + Vite production build
 npm run preview      # preview production build locally
 ```
+
+See [README verification](README.md#verification) for focused tests and conditional browser checks. No lint or formatter script is configured. Vite defaults to port 5173 and may choose another port if it is occupied.
 
 ## Architecture
 
@@ -59,22 +65,22 @@ A browser-based explorable explanation game that teaches orbital mechanics throu
 
 ## Current State
 
-**v1.0 complete** — all 4 phases shipped. 30 levels across 4 acts, Sandbox mode, Vercel deploy.
+**v1 gameplay complete** — all 4 phases shipped. Package metadata remains `0.0.1`. 30 levels across 4 acts, Sandbox mode, Vercel deploy.
 
 ## Stack
 
-- TypeScript: 5.7+ (strict mode, no `any`)
-- Vite: 6+ (build tool + dev server)
+- TypeScript: 7.0.2 (strict mode, no `any`)
+- Vite: 8.3.2 (build tool + dev server)
 - HTML5 Canvas 2D: browser native (no WebGL, no physics library)
-- Vitest: 3+ (unit tests for all physics math)
+- Vitest: 5.0.2 (unit tests for all physics math)
 - Vercel: static deploy target
 
 ## How To Run
 
-- `npm install` — install dev dependencies
+- `npm ci` — install locked runtime and dev dependencies
 - `npm run dev` — dev server at localhost:5173
 - `npm test` — unit tests via Vitest
-- `npm run build` — TypeScript compile + Vite production build
+- `npm run build` — TypeScript typecheck + Vite production build
 - `npm run preview` — preview production build locally
 
 ## Known Risks
@@ -82,7 +88,7 @@ A browser-based explorable explanation game that teaches orbital mechanics throu
 - Do not use any external physics libraries — the simulation is written from scratch (that's the point)
 - Do not use React, Vue, or any UI framework — DOM for menus/HUD only, Canvas for game rendering
 - Do not couple the simulation tick to `requestAnimationFrame` — use fixed timestep with accumulator in `GameLoop.ts`
-- Do not store any state server-side — localStorage only, nothing leaves the browser
+- Do not store any state server-side — localStorage only for game state; Vercel Analytics sends external requests
 - Do not add sound, multiplayer, or 3D mode — these are v2 features
 - Do not add features not in the current phase of IMPLEMENTATION-ROADMAP.md
 

@@ -35,6 +35,8 @@ OrbitMechanic is a browser-based explorable explanation game for orbital mechani
 
 ## Verification
 
+Use npm with `package-lock.json`. The locked stack is TypeScript 7.0.2, Vite 8.3.2, and Vitest 5.0.2. Node.js must satisfy `^22.22.2 || ^24.15.0 || >=26.0.0` (22.22.2+ on the 22 line, 24.15.0+ on the 24 line, or 26+; excludes Node 23 and 25), the intersection of all locked dependency engine ranges.
+
 Use [README verification](README.md#verification) as the canonical local gate; it documents dependency installation, focused and broader tests, build/typecheck, and conditional browser checks.
 
 ## Done Criteria

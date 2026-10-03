@@ -13,13 +13,13 @@ OrbitMechanics is a browser-based puzzle game built on real Newtonian physics. D
 - **Patched conics** — smooth sphere-of-influence handoff between bodies as your spacecraft crosses gravitational boundaries
 - **30 levels** — four acts of handcrafted challenges from basic circular parking orbits to multi-body gravity assists
 - **Sandbox mode** — place stars, planets, and satellites in any configuration and watch the system evolve; no win condition, pure exploration
-- **Zero dependencies** — pure TypeScript and the browser's native Canvas 2D API; nothing to install beyond Node
+- **No game or physics framework** — TypeScript and native Canvas 2D; the only runtime dependency is `@vercel/analytics` 2.0.1
 
 ## Quick Start
 
 ### Prerequisites
 
-- Node.js 26+ (also supported by the lockfile: Node 22.22.2+ on the 22 line or 24.15.0+ on the 24 line)
+- Node.js `^22.22.2 || ^24.15.0 || >=26.0.0` (the intersection of all locked dependency engine ranges): 22.22.2+ on the 22 line, 24.15.0+ on the 24 line, or 26+. Node 23 and 25 are unsupported.
 - npm (included with Node)
 
 ### Installation
@@ -55,6 +55,8 @@ npm test -- tests/utils/Vector2.test.ts
 # Physics changes: select the relevant tests/simulation/*.test.ts file.
 # Broader unit gate:
 npm test
+# TypeScript checking only (no separate typecheck script):
+npm exec -- tsc --noEmit
 # TypeScript checking followed by the production bundle:
 npm run build
 ```
@@ -67,13 +69,17 @@ For Canvas, input, level progression, or simulation display changes, run `npm ru
 
 | Layer | Technology |
 |-------|------------|
-| Language | TypeScript 5.7 (strict mode) |
-| Bundler | Vite 6 |
+| Language | TypeScript 7.0.2 (strict mode) |
+| Bundler | Vite 8.3.2 |
 | Rendering | HTML5 Canvas 2D API |
 | Physics | Custom Verlet integrator + patched conics |
 | Orbit preview | Kepler solver (analytical) |
-| Tests | Vitest 3 |
+| Tests | Vitest 5.0.2 |
 | Deploy | Vercel |
+
+Versions above are resolved in `package-lock.json`; `package.json` requests TypeScript `~7.0.2`, Vite `^8.3.1`, and Vitest `^5.0.2`. Use npm and the committed lockfile. `make install`, `make dev`, `make test`, and `make build` wrap the corresponding npm commands. `make clean` removes generated dependency/build directories.
+
+The existing `vercel.json` selects pnpm for deployment builds, although this repository commits only an npm lockfile. Local verification uses npm; the deployment package-manager mismatch needs a separate config correction.
 
 ## Architecture
 
